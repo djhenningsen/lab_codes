@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[25]:
-
-
 #The following code is for one dataset, change file paths and repeat as needed for different chips
 
 #needed imports
