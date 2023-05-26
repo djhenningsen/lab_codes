@@ -36,8 +36,8 @@ V = dat_pGe["Hall(mV)"].values
 B = dat_pGe["B(kG)"].values
 
 
-# In[26]:
-
+###########################################
+#First figure
 
 plt.figure(dpi=1200); #set dpi=1200, makes larger figure
 plt.scatter(B, V, s=0.5); #plot B vs V
@@ -49,8 +49,9 @@ plt.tight_layout(); #tight layout
 plt.savefig('/save/file/path/fig.png') #save figure
 
 
-# In[12]:
-
+##########################################
+## Constants and aditional calculations ##
+##########################################
 
 mu0 = 4*np.pi*10**(-7) #vacuum permeability
 N = 1200 #number of turns of coil
@@ -63,8 +64,9 @@ H = n*mu0*dat_pGe['MagCurr(Amp)'] #H field calc (H = field intensity)
 a,b = np.polyfit(H,dat_pGe['B(kG)'],1) #linear fit of H field to B field
 
 
-# In[29]:
 
+############################################
+#Second figure
 
 plt.figure(dpi=1200); #set dpi=1200, makes larger figure
 plt.scatter(dat_pGe['MagCurr(Amp)'],dat_pGe['B(kG)'], marker=',', s=1); #plot curent vs B
