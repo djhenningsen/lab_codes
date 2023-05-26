@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 #needed imports
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -13,9 +10,6 @@ import os
 import glob
 from matplotlib.pyplot import cm
 import matplotlib.patches as patches
-
-
-# In[4]:
 
 
 #path to file directory
@@ -31,9 +25,6 @@ oh = (filepath + 'your_data.txt')
 oh_spec = pd.read_csv(oh,sep='\t',header=None)
 
 
-# In[6]:
-
-
 plt.figure(dpi=1200) #set dpi=1200, makes larger figure
 plt.plot(oh_spec[0],oh_spec[1],'k',linewidth=0.7) #plot wavelength [0] vs intensity [1]
 plt.title('Overhead Light Spectra',pad=10,fontsize=18) #title
@@ -42,8 +33,6 @@ plt.ylabel('Intensity',labelpad=10,fontsize=18) #y axis label
 plt.minorticks_on() #turn on minor ticks on the axis
 plt.savefig(filepath + 'figs/fig.png') #save figure
 
-
-# In[7]:
 
 
 #create a lorentzian needed to fit to data, most important 
@@ -60,9 +49,6 @@ def lorentzian(x, A, x0, gamma, y0):
 gstp = (filepath + 'your_data.txt')
 #set to a dataframe
 g_spec = pd.read_csv(gstp,sep='\t',header=None)
-
-
-# In[8]:
 
 
 #initial guess based on data
@@ -87,7 +73,6 @@ plt.legend() #append legend to plot
 plt.savefig(filepath + 'figs/fig.png') #save figure
 
 
-# In[9]:
 
 
 ####################################
@@ -99,8 +84,6 @@ henestp = (filepath + 'your_data.txt')
 #set to a dataframe
 hene_spec = pd.read_csv(henestp,sep='\t',header=None)
 
-
-# In[10]:
 
 
 #initial guess based on data
@@ -126,7 +109,6 @@ plt.legend() #append legend to plot
 plt.savefig(filepath + 'figs/fig.png') #save figure
 
 
-# In[11]:
 
 
 ###################################
@@ -139,7 +121,6 @@ estp = (filepath + 'your_data.txt')
 em_spec = pd.read_csv(estp,sep='\t',header=None)
 
 
-# In[12]:
 
 
 #create a list of key spectral lines for expected specrtal data
@@ -166,7 +147,7 @@ plt.tight_layout() #apply tight layout to plot
 plt.savefig(filepath + 'figs/fig.png') #save figure
 
 
-# In[17]:
+
 
 
 ###################################
@@ -195,8 +176,6 @@ g_pico = pd.concat(dfs, ignore_index=True)
 #group data into 0.01 ms bins and average the data in the bins
 g_pico_agg = g_pico.groupby(g_pico['(ms)'] // 0.01).agg('mean')
 
-
-# In[19]:
 
 
 ##################################
@@ -257,7 +236,6 @@ plt.gcf().text(0.02, 0.5, 'Voltage [mV]', va='center', rotation='vertical', font
 plt.savefig(filepath + 'figs/fig.png') #save fig
 
 
-# In[ ]:
 
 
 ###################################
@@ -287,19 +265,6 @@ hene_pico = pd.concat(dfs, ignore_index=True)
 hene_pico_agg = hene_pico.groupby(hene_pico['(ms)'] // 0.01).agg('mean')
 
 
-# In[20]:
-
-
-
-
-
-# In[21]:
-
-
-
-
-
-# In[24]:
 
 
 ##################################
@@ -363,9 +328,6 @@ plt.gcf().text(0.03, 0.5, 'Voltage [mV]', va='center', rotation='vertical', font
 plt.savefig(filepath + 'figs/henepico.png') #save figure
 
 
-# In[26]:
-
-
 ####################################################
 # For HeNe laser single cavity mode picoscope data
 ####################################################
@@ -390,8 +352,6 @@ hene_mode_pico = pd.concat(dfs, ignore_index=True)
 #group data into 0.01 ms bins and average the data in the bins
 hene_mode_pico_agg = hene_mode_pico.groupby(hene_pico['(ms)'] // 0.01).agg('mean')
 
-
-# In[27]:
 
 
 #fit for single mode (peak)
